@@ -36,6 +36,7 @@
             this.labelbarraSuperior = new System.Windows.Forms.Label();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.webView = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.comboBoxAdress = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.webView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,10 +46,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelNavegador.AutoSize = true;
-            this.labelNavegador.Font = new System.Drawing.Font("Magical Childhood", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNavegador.Location = new System.Drawing.Point(12, 39);
+            this.labelNavegador.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold);
+            this.labelNavegador.Location = new System.Drawing.Point(12, 41);
             this.labelNavegador.Name = "labelNavegador";
-            this.labelNavegador.Size = new System.Drawing.Size(211, 39);
+            this.labelNavegador.Size = new System.Drawing.Size(207, 38);
             this.labelNavegador.TabIndex = 0;
             this.labelNavegador.Text = "NAVEGADOR";
             this.labelNavegador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,6 +61,7 @@
             this.textBoxAdress.Name = "textBoxAdress";
             this.textBoxAdress.Size = new System.Drawing.Size(651, 20);
             this.textBoxAdress.TabIndex = 1;
+            this.textBoxAdress.Visible = false;
             this.textBoxAdress.TextChanged += new System.EventHandler(this.textBoxAdress_TextChanged);
             // 
             // label1
@@ -105,18 +107,27 @@
             this.webView.AllowExternalDrop = true;
             this.webView.CreationProperties = null;
             this.webView.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView.Location = new System.Drawing.Point(-7, 120);
+            this.webView.Location = new System.Drawing.Point(-7, 132);
             this.webView.Name = "webView";
-            this.webView.Size = new System.Drawing.Size(826, 314);
-            this.webView.Source = new System.Uri("https://www.microsoft.com", System.UriKind.Absolute);
+            this.webView.Size = new System.Drawing.Size(826, 302);
+            this.webView.Source = new System.Uri("https://www.google.com/", System.UriKind.Absolute);
             this.webView.TabIndex = 6;
             this.webView.ZoomFactor = 1D;
+            // 
+            // comboBoxAdress
+            // 
+            this.comboBoxAdress.FormattingEnabled = true;
+            this.comboBoxAdress.Location = new System.Drawing.Point(12, 91);
+            this.comboBoxAdress.Name = "comboBoxAdress";
+            this.comboBoxAdress.Size = new System.Drawing.Size(651, 21);
+            this.comboBoxAdress.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 428);
+            this.Controls.Add(this.comboBoxAdress);
             this.Controls.Add(this.textBoxAdress);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.labelbarraSuperior);
@@ -141,7 +152,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelbarraSuperior;
         private System.Windows.Forms.Button buttonBuscar;
-        
+        private System.Windows.Forms.ComboBox comboBoxAdress;
     }
 }
 

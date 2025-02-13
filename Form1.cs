@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace navegadorWeb
 {
@@ -28,6 +30,7 @@ namespace navegadorWeb
             webView.Size = this.ClientSize - new System.Drawing.Size(webView.Location);
             buttonBuscar.Left = this.ClientSize.Width - buttonBuscar.Width;
             textBoxAdress.Width = buttonBuscar.Left - textBoxAdress.Left;
+            comboBoxAdress.Width=buttonBuscar.Left - comboBoxAdress.Left;
             labelbarraSuperior.Size = this.ClientSize = new System.Drawing.Size(labelbarraSuperior.Location);
             labelNavegador.Left= this.ClientSize.Width;
         }
@@ -61,6 +64,7 @@ namespace navegadorWeb
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             string adress = textBoxAdress.Text;
+            string adress1 = comboBoxAdress.Text;
 
             if (!adress.StartsWith("https:/"))
             {
@@ -78,9 +82,43 @@ namespace navegadorWeb
                 webView.CoreWebView2.Navigate(textBoxAdress.Text);
             }
 
-            
 
+            if (!adress1.StartsWith("https:/"))
+            {
+                comboBoxAdress.Text = "https://" + adress1;
+            }
+
+            if (!adress1.EndsWith(".com"))
+            {
+                comboBoxAdress.Text = "https://www.google.com/search?q=" + adress1;
+
+            }
+
+            if (webView != null && webView.CoreWebView2 != null)
+            {
+                webView.CoreWebView2.Navigate(comboBoxAdress.Text);
+            }
+
+
+            //textBoxAdress.Text = ""; //para que aparezca vacio
+            string ruta = @"../../historial.txt";
+
+            FileStream stream = new FileStream(ruta, FileMode.Append, FileAccess.Write);
             
+            StreamWriter writer = new StreamWriter(stream);
+
+
+
+            //Write escribe todo en la misma linea. En este ejemplo se hará un dato por cada línea
+            writer.WriteLine(comboBoxAdress.Text);
+            //Cerrar el archivo
+            writer.Close();
+
+            comboBoxAdress.Items.Add(comboBoxAdress.Text);
+
+
+
+
 
         }
 
