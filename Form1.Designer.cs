@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelNavegador = new System.Windows.Forms.Label();
-            this.textBoxAdress = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelbarraSuperior = new System.Windows.Forms.Label();
@@ -54,15 +53,6 @@
             this.labelNavegador.Text = "NAVEGADOR";
             this.labelNavegador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelNavegador.UseMnemonic = false;
-            // 
-            // textBoxAdress
-            // 
-            this.textBoxAdress.Location = new System.Drawing.Point(12, 91);
-            this.textBoxAdress.Name = "textBoxAdress";
-            this.textBoxAdress.Size = new System.Drawing.Size(651, 20);
-            this.textBoxAdress.TabIndex = 1;
-            this.textBoxAdress.Visible = false;
-            this.textBoxAdress.TextChanged += new System.EventHandler(this.textBoxAdress_TextChanged);
             // 
             // label1
             // 
@@ -117,7 +107,7 @@
             // comboBoxAdress
             // 
             this.comboBoxAdress.FormattingEnabled = true;
-            this.comboBoxAdress.Location = new System.Drawing.Point(12, 91);
+            this.comboBoxAdress.Location = new System.Drawing.Point(12, 90);
             this.comboBoxAdress.Name = "comboBoxAdress";
             this.comboBoxAdress.Size = new System.Drawing.Size(651, 21);
             this.comboBoxAdress.TabIndex = 7;
@@ -128,7 +118,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 428);
             this.Controls.Add(this.comboBoxAdress);
-            this.Controls.Add(this.textBoxAdress);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.labelbarraSuperior);
             this.Controls.Add(this.label2);
@@ -148,7 +137,6 @@
 
         private Microsoft.Web.WebView2.WinForms.WebView2 webView;
         private System.Windows.Forms.Label labelNavegador;
-        private System.Windows.Forms.TextBox textBoxAdress;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelbarraSuperior;

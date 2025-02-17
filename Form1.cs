@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -29,7 +30,6 @@ namespace navegadorWeb
         {
             webView.Size = this.ClientSize - new System.Drawing.Size(webView.Location);
             buttonBuscar.Left = this.ClientSize.Width - buttonBuscar.Width;
-            textBoxAdress.Width = buttonBuscar.Left - textBoxAdress.Left;
             comboBoxAdress.Width=buttonBuscar.Left - comboBoxAdress.Left;
             labelbarraSuperior.Size = this.ClientSize = new System.Drawing.Size(labelbarraSuperior.Location);
             labelNavegador.Left= this.ClientSize.Width;
@@ -57,40 +57,18 @@ namespace navegadorWeb
         void UpdateAddressBar(object sender, CoreWebView2WebMessageReceivedEventArgs args)
         {
             String uri = args.TryGetWebMessageAsString();
-            textBoxAdress.Text = uri;
             webView.CoreWebView2.PostWebMessageAsString(uri);
         }
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-            string adress = textBoxAdress.Text;
             string adress1 = comboBoxAdress.Text;
 
-            /*if (!adress.StartsWith("https:/"))
-            {
-                textBoxAdress.Text = "https://" + adress;
-            }
-            else
-            {
-                textBoxAdress.Text = "https://" + adress;
-            }
             
-            if (!adress.EndsWith(".com"))
-            {
-                textBoxAdress.Text = "https://www.google.com/search?q=" + adress;
-
-            }
-
-            if (webView != null && webView.CoreWebView2 != null)
-            {
-                webView.CoreWebView2.Navigate(textBoxAdress.Text);
-            }*/
-
-
             if (!adress1.StartsWith("https:/"))
             {
                 comboBoxAdress.Text = "https://" + adress1;
-            } else if (adress.StartsWith("https://"))
+            } else if (adress1.StartsWith("https://"))
             {
                 comboBoxAdress.Text = adress1;
             }
@@ -122,9 +100,42 @@ namespace navegadorWeb
             //Cerrar el archivo
             writer.Close();
 
-            //comboBoxAdress.Items.Add(comboBoxAdress.Text);
 
-            //comboBoxAdress.Items.Add(.Text);
+                if (File.Exists(ruta))
+                {
+                    // Leer todo el contenido del archivo
+                    string[] lineas = File.ReadAllLines(ruta);
+
+                    // Limpiar el ComboBox para evitar duplicados
+                    comboBoxAdress.Items.Clear();
+
+                    // Agregar cada línea del archivo al ComboBox
+                    /*foreach (var linea in lineas)
+                    {
+                        comboBoxAdress.Items.Add(linea);
+                    }*/
+
+                    foreach (var linea in lineas)
+                    {
+                        comboBoxAdress.Items.Add(linea);
+                    }
+                    for (int j = 0; j < 10 && j < lineas.Length; j++)
+                    {
+                        comboBoxAdress.Items.Add(lineas[j]);
+
+                    }
+
+                }
+
+            
+
+            
+
+
+            //int largoHistorial = 10;
+
+            
+
 
 
 
@@ -142,6 +153,8 @@ namespace navegadorWeb
             //string rutaArchivo = "C:\\ruta\\a\\tu\\archivo.txt";
             string ruta2 = @"../../historial.txt";
 
+
+
             // Comprobar si el archivo existe
             if (File.Exists(ruta2))
             {
@@ -152,15 +165,17 @@ namespace navegadorWeb
                 comboBoxAdress.Items.Clear();
 
                 // Agregar cada línea del archivo al ComboBox
-                foreach (var linea in lineas)
+                for (int i = 0; i < 10 && i < lineas.Length; i++)
                 {
-                    comboBoxAdress.Items.Add(linea);
+                    comboBoxAdress.Items.Add(lineas[i]);
+
                 }
             }
             else
             {
                 MessageBox.Show("El archivo no existe.");
             }
+            }
         }
     }
-}
+
