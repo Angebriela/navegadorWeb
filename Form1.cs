@@ -66,7 +66,11 @@ namespace navegadorWeb
             string adress = textBoxAdress.Text;
             string adress1 = comboBoxAdress.Text;
 
-            if (!adress.StartsWith("https:/"))
+            /*if (!adress.StartsWith("https:/"))
+            {
+                textBoxAdress.Text = "https://" + adress;
+            }
+            else
             {
                 textBoxAdress.Text = "https://" + adress;
             }
@@ -80,12 +84,15 @@ namespace navegadorWeb
             if (webView != null && webView.CoreWebView2 != null)
             {
                 webView.CoreWebView2.Navigate(textBoxAdress.Text);
-            }
+            }*/
 
 
             if (!adress1.StartsWith("https:/"))
             {
                 comboBoxAdress.Text = "https://" + adress1;
+            } else if (adress.StartsWith("https://"))
+            {
+                comboBoxAdress.Text = adress1;
             }
 
             if (!adress1.EndsWith(".com"))
@@ -93,6 +100,7 @@ namespace navegadorWeb
                 comboBoxAdress.Text = "https://www.google.com/search?q=" + adress1;
 
             }
+            
 
             if (webView != null && webView.CoreWebView2 != null)
             {
@@ -114,8 +122,9 @@ namespace navegadorWeb
             //Cerrar el archivo
             writer.Close();
 
-            comboBoxAdress.Items.Add(comboBoxAdress.Text);
+            //comboBoxAdress.Items.Add(comboBoxAdress.Text);
 
+            //comboBoxAdress.Items.Add(.Text);
 
 
 
@@ -125,6 +134,33 @@ namespace navegadorWeb
         private void textBoxAdress_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Definir la ruta del archivo
+            //string rutaArchivo = "C:\\ruta\\a\\tu\\archivo.txt";
+            string ruta2 = @"../../historial.txt";
+
+            // Comprobar si el archivo existe
+            if (File.Exists(ruta2))
+            {
+                // Leer todo el contenido del archivo
+                string[] lineas = File.ReadAllLines(ruta2);
+
+                // Limpiar el ComboBox para evitar duplicados
+                comboBoxAdress.Items.Clear();
+
+                // Agregar cada línea del archivo al ComboBox
+                foreach (var linea in lineas)
+                {
+                    comboBoxAdress.Items.Add(linea);
+                }
+            }
+            else
+            {
+                MessageBox.Show("El archivo no existe.");
+            }
         }
     }
 }
