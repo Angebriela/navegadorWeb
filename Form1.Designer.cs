@@ -36,6 +36,9 @@
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.webView = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.comboBoxAdress = new System.Windows.Forms.ComboBox();
+            this.buttonOrdenarFecha = new System.Windows.Forms.Button();
+            this.buttonOrdenarVis = new System.Windows.Forms.Button();
+            this.buttonEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.webView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,7 +84,6 @@
             this.labelbarraSuperior.Name = "labelbarraSuperior";
             this.labelbarraSuperior.Size = new System.Drawing.Size(898, 33);
             this.labelbarraSuperior.TabIndex = 4;
-            
             // 
             // buttonBuscar
             // 
@@ -114,12 +116,46 @@
             this.comboBoxAdress.Name = "comboBoxAdress";
             this.comboBoxAdress.Size = new System.Drawing.Size(651, 24);
             this.comboBoxAdress.TabIndex = 7;
+            this.comboBoxAdress.SelectedIndexChanged += new System.EventHandler(this.comboBoxAdress_SelectedIndexChanged);
+            // 
+            // buttonOrdenarFecha
+            // 
+            this.buttonOrdenarFecha.Location = new System.Drawing.Point(669, 62);
+            this.buttonOrdenarFecha.Name = "buttonOrdenarFecha";
+            this.buttonOrdenarFecha.Size = new System.Drawing.Size(106, 23);
+            this.buttonOrdenarFecha.TabIndex = 8;
+            this.buttonOrdenarFecha.Text = "Orden por fecha";
+            this.buttonOrdenarFecha.UseVisualStyleBackColor = true;
+            this.buttonOrdenarFecha.Click += new System.EventHandler(this.buttonOrdenarFecha_Click);
+            // 
+            // buttonOrdenarVis
+            // 
+            this.buttonOrdenarVis.Location = new System.Drawing.Point(669, 33);
+            this.buttonOrdenarVis.Name = "buttonOrdenarVis";
+            this.buttonOrdenarVis.Size = new System.Drawing.Size(106, 23);
+            this.buttonOrdenarVis.TabIndex = 9;
+            this.buttonOrdenarVis.Text = "Orden por visita";
+            this.buttonOrdenarVis.UseVisualStyleBackColor = true;
+            this.buttonOrdenarVis.Click += new System.EventHandler(this.buttonOrdenarVis_Click);
+            // 
+            // buttonEliminar
+            // 
+            this.buttonEliminar.Location = new System.Drawing.Point(588, 61);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
+            this.buttonEliminar.TabIndex = 10;
+            this.buttonEliminar.Text = "Eliminar";
+            this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 428);
+            this.Controls.Add(this.buttonEliminar);
+            this.Controls.Add(this.buttonOrdenarVis);
+            this.Controls.Add(this.buttonOrdenarFecha);
             this.Controls.Add(this.comboBoxAdress);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.labelbarraSuperior);
@@ -145,6 +181,9 @@
         private System.Windows.Forms.Label labelbarraSuperior;
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.ComboBox comboBoxAdress;
+        private System.Windows.Forms.Button buttonOrdenarFecha;
+        private System.Windows.Forms.Button buttonOrdenarVis;
+        private System.Windows.Forms.Button buttonEliminar;
     }
 }
 

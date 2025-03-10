@@ -18,6 +18,7 @@ namespace navegadorWeb
     public partial class Form1 : Form
     {
         List <Url> urls = new List<Url>();
+        Url url = new Url();
         public Form1()
         {
             InitializeComponent();
@@ -73,10 +74,25 @@ namespace navegadorWeb
             webView.CoreWebView2.PostWebMessageAsString(uri);
         }
 
+        void urlDuplicadas(string url1)
+        {
+            Url url = urls.Find(u => u.DireccionUrl == url1);
+            if (url != null)
+            {
+                url.ContadorVisitas++;
+                url.FechaAcceso = DateTime.Now;
+            }
+            else
+            {
+                urls.Add(new Url { DireccionUrl = url1, ContadorVisitas = 1, FechaAcceso = DateTime.Now });
+            }
+        }
+
+
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             //Instanciar la clase Url para poder acceder a sus atributos
-            Url url = new Url();
+            //Url url = new Url();
 
             string adress1 = comboBoxAdress.Text;
 
@@ -111,15 +127,16 @@ namespace navegadorWeb
             StreamWriter writer = new StreamWriter(stream);
 
             //Instanciar la clase Url objetos
-            url.DireccionUrl = comboBoxAdress.Text;
+            /*url.DireccionUrl = comboBoxAdress.Text;
             url.FechaAcceso = DateTime.Now;
-            url.ContadorVisitas = 1;
+            url.ContadorVisitas = 1;*/
 
+            urlDuplicadas(adress1);
 
 
             //Write escribe todo en la misma linea. En este ejemplo se hará un dato por cada línea
             writer.WriteLine(comboBoxAdress.Text);
-            urls.Add(url);
+            //urls.Add(url);
             //Cerrar el archivo
             writer.Close();
 
@@ -157,7 +174,6 @@ namespace navegadorWeb
             string ruta2 = @"../../historial.txt";
 
 
-
             // Comprobar si el archivo existe
             if (File.Exists(ruta2))
             {
@@ -180,7 +196,30 @@ namespace navegadorWeb
             }
             }
 
-       
+        private void buttonOrdenarVis_Click(object sender, EventArgs e)
+        {
+            //historial = historial.OrderByDescending(u => u.VecesVisitada).ToList();
+
+
+
+        }
+
+        private void buttonOrdenarFecha_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+
+            //Url url = Url.Find(u=>u.direccionUrl=ComboBoxAdress.Text);
+
+        }
+
+        private void comboBoxAdress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

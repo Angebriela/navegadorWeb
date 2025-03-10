@@ -13,12 +13,10 @@ namespace navegadorWeb
         public int contadorVisitas { get; set; }*/
 
 
-        string direccionUrl;
-        DateTime fechaAcceso;
-        int contadorVisitas;
+       
 
-        public string DireccionUrl { get => direccionUrl; set => direccionUrl = value; }
-        public DateTime FechaAcceso { get => fechaAcceso; set => fechaAcceso = value; }
-        public int ContadorVisitas { get => contadorVisitas; set => contadorVisitas = value; }
+        public string DireccionUrl { get; set; }
+        public DateTime FechaAcceso { get; set ; }
+        public int ContadorVisitas { get; set ; }
     }
 }
