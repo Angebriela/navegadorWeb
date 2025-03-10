@@ -81,10 +81,12 @@
             this.labelbarraSuperior.Name = "labelbarraSuperior";
             this.labelbarraSuperior.Size = new System.Drawing.Size(898, 33);
             this.labelbarraSuperior.TabIndex = 4;
+            
             // 
             // buttonBuscar
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(669, 88);
+            this.buttonBuscar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBuscar.Location = new System.Drawing.Point(669, 91);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(106, 23);
             this.buttonBuscar.TabIndex = 5;
@@ -106,10 +108,11 @@
             // 
             // comboBoxAdress
             // 
+            this.comboBoxAdress.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxAdress.FormattingEnabled = true;
             this.comboBoxAdress.Location = new System.Drawing.Point(12, 90);
             this.comboBoxAdress.Name = "comboBoxAdress";
-            this.comboBoxAdress.Size = new System.Drawing.Size(651, 21);
+            this.comboBoxAdress.Size = new System.Drawing.Size(651, 24);
             this.comboBoxAdress.TabIndex = 7;
             // 
             // Form1

@@ -17,23 +17,36 @@ namespace navegadorWeb
 {
     public partial class Form1 : Form
     {
+        List <Url> urls = new List<Url>();
         public Form1()
         {
             InitializeComponent();
             this.Resize += new System.EventHandler(this.Form_Resize);
+            CenterLabel();
             webView.NavigationStarting += EnsureHttps;
             InitializeAsync();
 
         }
 
+
         private void Form_Resize(object sender, EventArgs e)
         {
+            labelbarraSuperior.Width = this.ClientSize.Width + labelbarraSuperior.Width;
+            CenterLabel();
             webView.Size = this.ClientSize - new System.Drawing.Size(webView.Location);
             buttonBuscar.Left = this.ClientSize.Width - buttonBuscar.Width;
             comboBoxAdress.Width=buttonBuscar.Left - comboBoxAdress.Left;
-            labelbarraSuperior.Size = this.ClientSize = new System.Drawing.Size(labelbarraSuperior.Location);
-            labelNavegador.Left= this.ClientSize.Width;
         }
+
+        private void CenterLabel()
+        {
+            // Establecer la posición superior de la Label
+            labelbarraSuperior.Top = 0;
+
+            // Calcular la posición izquierda para centrar la Label
+            labelbarraSuperior.Left = (this.ClientSize.Width - labelbarraSuperior.Width) / 2;
+        }
+
 
         void EnsureHttps(object sender, CoreWebView2NavigationStartingEventArgs args)
         {
@@ -62,9 +75,13 @@ namespace navegadorWeb
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
+            //Instanciar la clase Url para poder acceder a sus atributos
+            Url url = new Url();
+
             string adress1 = comboBoxAdress.Text;
 
-            
+
+            //Para agregar la direccion de enlace en la busqueda
             if (!adress1.StartsWith("https:/"))
             {
                 comboBoxAdress.Text = "https://" + adress1;
@@ -78,8 +95,8 @@ namespace navegadorWeb
                 comboBoxAdress.Text = "https://www.google.com/search?q=" + adress1;
 
             }
-            
 
+            //Para el funcionamiento de la navegacion en el webview
             if (webView != null && webView.CoreWebView2 != null)
             {
                 webView.CoreWebView2.Navigate(comboBoxAdress.Text);
@@ -93,10 +110,16 @@ namespace navegadorWeb
             
             StreamWriter writer = new StreamWriter(stream);
 
+            //Instanciar la clase Url objetos
+            url.DireccionUrl = comboBoxAdress.Text;
+            url.FechaAcceso = DateTime.Now;
+            url.ContadorVisitas = 1;
+
 
 
             //Write escribe todo en la misma linea. En este ejemplo se hará un dato por cada línea
             writer.WriteLine(comboBoxAdress.Text);
+            urls.Add(url);
             //Cerrar el archivo
             writer.Close();
 
@@ -109,34 +132,14 @@ namespace navegadorWeb
                     // Limpiar el ComboBox para evitar duplicados
                     comboBoxAdress.Items.Clear();
 
-                    // Agregar cada línea del archivo al ComboBox
-                    /*foreach (var linea in lineas)
-                    {
-                        comboBoxAdress.Items.Add(linea);
-                    }*/
-
-                    foreach (var linea in lineas)
-                    {
-                        comboBoxAdress.Items.Add(linea);
-                    }
+                   
                     for (int j = 0; j < 10 && j < lineas.Length; j++)
                     {
                         comboBoxAdress.Items.Add(lineas[j]);
 
                     }
-
-                }
-
-            
-
-            
-
-
-            //int largoHistorial = 10;
-
-            
-
-
+                
+            }
 
 
 
@@ -176,6 +179,8 @@ namespace navegadorWeb
                 MessageBox.Show("El archivo no existe.");
             }
             }
-        }
+
+       
+    }
     }
 

@@ -1,16 +1,5 @@
-https://youtube.com
-https://wikipedia.com
-https://youtube.com
-https://www.google.com/search?q=mariposa
-https://www.google.com/search?q=
-https://www.google.com/search?q=mariposa
-https://youtube.com
-https://www.google.com/search?q=mariposahttps://www.google.com/search?q=mariquita
-https://www.google.com/search?q=lupa
-https://www.google.com/search?q=conejo
-https://www.google.com/search?q=buho
-https://www.google.com/search?q=teclado
-https://www.google.com/search?q=que es navegador
-https://www.google.com/search?q=Azul
-https://www.google.com/search?q=unicornio
-https://www.google.com/search?q=fama
+https://www.google.com/search?q=perro
+
+https://www.google.com/search?q=perro
+https://www.google.com/search?q=gato
+https://www.google.com/search?q=pollo
